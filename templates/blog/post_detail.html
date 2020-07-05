@@ -35,9 +35,11 @@
         <br><br>
         <hr>
 
+        {% if not post.restrict_comment %}
         <div class="main-comment-section">
           {% include 'blog/_comments.html' %}
         </div>
+        {% endif %}
 
     </div>
 {% endblock %}

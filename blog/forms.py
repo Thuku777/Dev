@@ -8,6 +8,7 @@ class PostCreateForm(forms.ModelForm):
             'title',
             'body',
             'status',
+            'restrict_comment',
         ]
 
 
@@ -19,6 +20,7 @@ class PostEditForm(forms.ModelForm):
             'title',
             'body',
             'status',
+            'restrict_comment',
         ]
 
 

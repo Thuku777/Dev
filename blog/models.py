@@ -27,6 +27,7 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+    restrict_comment = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-id']
