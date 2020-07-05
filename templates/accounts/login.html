@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <form method="post" class="m-5">
+       {% csrf_token %}
+       {{ form.as_p}}
+       <small>
+       <input type="submit" value="Login" class="btn btn-sm btn-block btn-outline btn-success">
+           <a class="w3-text-teal w3-hover-text-blue btn btn-sm btn-block" style="text-decoration: None;" href="{% url 'register' %}">Don't have an account</a>
+           <a class="w3-text-teal w3-hover-text-blue btn btn-sm btn-block" style="text-decoration: None;"  href="{% url 'password_reset' %}">Forgot Password</a>
+       </small>
+
+       <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-- OR --</strong></p>
+        <a href="{% url 'social:begin' 'github' %}" class="btn btn-sm btn-block btn-outline-primary">Login with GitHub</a>
+       <br>
+       <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-sm btn-block btn-outline-info">Login with Google</a>
+   </form>
+{% endblock %}

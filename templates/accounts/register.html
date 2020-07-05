@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <form method="post" class="m-5">
+       {% csrf_token %}
+       {{ form.as_p}}
+       <small>
+           <a class="w3-text-teal" href="{% url 'user-login' %}">Already have an account</a>
+       </small>
+       <input type="submit" value="Sign Up" class="btn btn-sm btn-outline btn-success">
+   </form>
+{% endblock %}

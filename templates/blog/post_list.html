@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title%}
+   Blog
+{% endblock %}
+{% block content %}
+<div class="row">
+  {% for post in posts %}
+  <div class="col-md-6">
+    <div class="img-thumbnail w3-margin">
+      <a href="{{ post.get_absolute_url }}" class="w3-text-blue w3-hover-text-teal"><b>{{ post.title }}</b></a>
+      <small style="float: right;"><i>{{ post.created }}</i></small>
+      <br>
+      Author: <a class="w3-tag w3-round w3-small w3-green ">{{ post.author }}</a>
+      <br>
+      {{ post.body }}
+    </div>
+  </div>
+  <br>
+  {% empty %}
+  <div class="w3-margin">
+    <h3>No Posts Found having "{{ request.GET.q }}"</h3>
+  </div>
+  {% endfor %}
+
+  <!--pagination-->
+  <div class="w3-container m-5">
+    <div class="m-5">
+      <ul class="pagination">
+        {% if posts.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ posts.previous_page_number }}">Previous &laquo; </a>
+        </li>
+        {% endif %}
+
+        {% for p in page_range %}
+        {% if posts.number == p %}
+        <li class="page-item active">
+          <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if posts.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ posts.next_page_number }}">Next &raquo; </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
