@@ -20,6 +20,19 @@
         <div class="" id="like-section">
           {% include 'blog/like_section.html' %}
         </div>
+
+        <div id="favourite-section">
+          {% if is_favourite %}
+          <a href="{% url 'favourite-post' pk=post.id %}">
+            <i class="fas fa-heart fa-lg"></i>
+          </a>
+          {% else %}
+          <a href="{% url 'favourite-post' pk=post.id %}">
+            <i class="far fa-heart fa-lg"></i>
+          </a>
+          {% endif %}
+        </div>
+
         {% if post.author == request.user %}
         <div class="section-1" style="float: right;">
           <a href="{% url 'post-edit' pk=post.id %}">
